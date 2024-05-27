@@ -11,8 +11,9 @@
 local G2L = {};
 
 -- StarterGui.ScreenGui
-G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"] = Instance.new("ScreenGui", game:GetService('CoreGui'));
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+G2L["1"]["ResetOnSpawn"] = false
 
 -- StarterGui.ScreenGui.Frame
 G2L["2"] = Instance.new("Frame", G2L["1"]);
@@ -31,10 +32,12 @@ G2L["3"]["BackgroundTransparency"] = 1;
 G2L["3"]["Size"] = UDim2.new(1, 0, 1, 0);
 G2L["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["3"]["ScrollBarThickness"] = 6;
+G2L["3"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y
 
 -- StarterGui.ScreenGui.Frame.ScrollingFrame.UIGridLayout
 G2L["4"] = Instance.new("UIGridLayout", G2L["3"]);
 G2L["4"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+G2L["4"]["CellSize"] = UDim2.new(0, 75, 0, 75)
 
 -- StarterGui.ScreenGui.Frame.ScrollingFrame.UICorner
 G2L["5"] = Instance.new("UICorner", G2L["3"]);
@@ -156,7 +159,8 @@ local script = G2L["6"];
 				CFrame = CFrame.new(Vector3.new(0, 3.5, 4), part.Position),
 			}
 	
-	
+			
+			Camera.FieldOfView = 60
 			Camera.CFrame = cameraGoal.CFrame
 			
 			
@@ -254,4 +258,4 @@ task.spawn(C_a);
 return G2L["1"], require;
 
 
--- loadstring(game:HttpGet('https://raw.githubusercontent.com/SubnauticaLaserMain/Piggy-ItemSelector/main/Updated2.lua', true))()
+-- loadstring(game:HttpGet('https://raw.githubusercontent.com/SubnauticaLaserMain/Piggy-ItemSelector/main/Updated.lua', true))()
