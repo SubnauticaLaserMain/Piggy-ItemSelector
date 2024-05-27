@@ -35,6 +35,7 @@ G2L["3"]["ScrollBarThickness"] = 6;
 -- StarterGui.ScreenGui.Frame.ScrollingFrame.UIGridLayout
 G2L["4"] = Instance.new("UIGridLayout", G2L["3"]);
 G2L["4"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+G2L["4"]["CellSize"] = UDim2.new(0, 75, 0, 75)
 
 -- StarterGui.ScreenGui.Frame.ScrollingFrame.UICorner
 G2L["5"] = Instance.new("UICorner", G2L["3"]);
@@ -131,9 +132,10 @@ local script = G2L["6"];
 			local part = Instance.new("Part")
 			
 			
-			if Part and typeof(Part) == 'Instance' and Part.ClassName == 'MeshPart' or Part and typeof(Part) == 'Instance' and Part.ClassName == 'UnionOperation' then
+			if Part and typeof(Part) == 'Instance' then
 				part = Part:Clone()
 				part.Parent = script.Parent
+				part.Position = Vector3.new(0, 0, 0)
 			else
 				part.Material = Enum.Material.Concrete
 				part.Color = Color3.new(0.25, 0.75, 1)
@@ -155,7 +157,8 @@ local script = G2L["6"];
 				CFrame = CFrame.new(Vector3.new(0, 3.5, 4), part.Position),
 			}
 	
-	
+			
+			Camera.FieldOfView = 60
 			Camera.CFrame = cameraGoal.CFrame
 			
 			
@@ -206,7 +209,7 @@ local script = G2L["6"];
 
 		for i = 1, #items do
 			GuiLibrary(items[i], function()
-				game:GetService('Players').LocalPlayer.Character:WaitForChild('Humanoid', 10).CFrame = items[i].CFrame
+				game:GetService('Players').LocalPlayer.Character:WaitForChild('HumanoidRootPart', 10).CFrame = items[i].CFrame
 			end)
 		end
 	end
@@ -253,4 +256,4 @@ task.spawn(C_a);
 return G2L["1"], require;
 
 
--- loadstring(game:HttpGet('https://raw.githubusercontent.com/SubnauticaLaserMain/Piggy-ItemSelector/main/Updated.lua', true))()
+-- loadstring(game:HttpGet('https://raw.githubusercontent.com/SubnauticaLaserMain/Piggy-ItemSelector/main/Updated2.lua', true))()
